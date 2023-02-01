@@ -5,8 +5,13 @@ workflows:
       - test
       - build-ipa:
           requires:
-                - test
+            - test
+          filters:
+            branches:
+              exept: main
       - deploy:
+          requires:
+                - test
           filters:
             branches:
               only: main
@@ -35,7 +40,8 @@ jobs:
     resource_class: nathansepul/class_appollo
     steps:
       - checkout
-      - run: Publication app
+      - run: echo 'Publication app'
       # - run: appollo signin --email <email> --password <password>
       # - run: appollo build start --build-type=publication <application_key>
       # - run: appollo signout
+
