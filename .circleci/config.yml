@@ -8,4 +8,4 @@ jobs:
     machine: true
     resource_class: nathansepul/project_flutter_appollo
     steps:
-      - run: echo "Hi I'm on Runners!"
+      - run: echo "Hi I'm on Runners test!"
