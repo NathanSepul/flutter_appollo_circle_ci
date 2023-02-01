@@ -9,9 +9,10 @@ workflows:
           filters:
             branches:
               exept: main
+              
       - deploy:
           requires:
-                - test
+            - test
           filters:
             branches:
               only: main
@@ -44,4 +45,3 @@ jobs:
       # - run: appollo signin --email <email> --password <password>
       # - run: appollo build start --build-type=publication <application_key>
       # - run: appollo signout
-
