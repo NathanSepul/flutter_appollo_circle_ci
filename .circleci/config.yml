@@ -6,6 +6,10 @@ workflows:
       - build-ipa:
           requires:
                 - test
+      - deploy:
+          filters:
+            branches:
+              only: master
 
       
 jobs:
@@ -25,4 +29,14 @@ jobs:
       - run: echo 'build ipa'
       # - run: appollo signin --email <email> --password <password>
       # - run: appollo build start --build-type=ad-hoc <application_key>
+      # - run: appollo signout
+
+  deploy:
+    machine: true
+    resource_class: nathansepul/class_appollo
+    steps:
+      - checkout
+      - run: Publication app
+      # - run: appollo signin --email <email> --password <password>
+      # - run: appollo build start --build-type=publication <application_key>
       # - run: appollo signout
