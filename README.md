@@ -1,6 +1,7 @@
 <h1>Appollo with CI/CD CircleCI</h1>
 
 This is an example project, with the objective the show how to use the [Circle Ci](https://circleci.com) with [Appollo](https://github.com/Appollo-CLI/Appollo "The easy way to setup, build & release flutter apps for iOS on Linux, Windows and MacOS").  
+<br>
 ![workflow](/.images/workflow.jpg "workflow")
 
 <h2>Prerequisites</h2>
