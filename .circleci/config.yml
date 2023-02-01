@@ -13,10 +13,10 @@ workflows:
 
       - deploy:
           requires:
-            - build-ipa
-          # filters:
-          #   branches:
-          #     only: production
+            - test
+          filters:
+            branches:
+              only: production
 
       
 jobs:
