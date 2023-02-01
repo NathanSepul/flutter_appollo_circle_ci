@@ -1,17 +1,18 @@
-<h1>Appollo with CI/CD GitHub Actions</h1>
+<h1>Appollo with CI/CD Circle CI</h1>
 
-This is an example project, with the objective the show how to use the Github Action with [Appollo](https://github.com/Appollo-CLI/Appollo "The easy way to setup, build & release flutter apps for iOS on Linux, Windows and MacOS").  
+This is an example project, with the objective the show how to use the [Circle Ci](https://circleci.com) with [Appollo](https://github.com/Appollo-CLI/Appollo "The easy way to setup, build & release flutter apps for iOS on Linux, Windows and MacOS").  
 ![workflow](/.images/workflow.jpg "workflow")
 
 <h2>Prerequisites</h2>
 
 To Follow this tutorial you will need :
 - [Appollo](https://github.com/Appollo-CLI/Appollo) configured on the futur runner machine
-- A project [Flutter](https://docs.flutter.dev/get-started/install) directly in root repository
+- A repository GitHub, GitLab or Bitbucket with a project [Flutter](https://docs.flutter.dev/get-started/install) directly in root repository
 
 <h2>Configuration</h2>
+When your connect your account (GitHub, GitLab or Bitbucket) you can select the repository you want to monitor.
 
-To use Github Acitons there are 2 possibilities, use the GitHub's runner (paid solution) or use the self-hosted runners (free solution).
+To use Circle CI there are 2 possibilities, use the GitHub's runner (paid solution) or use the self-hosted runners (free solution).
 In this tutorial we will use the sel-hosted runner.
 
 <h3>Self-hosted runner</h3>
@@ -32,61 +33,56 @@ Inside workflows you will create github_actions.yml file and insert your actions
 Exemple of workflow with Appollo
 
 ```YAML 
-name : appollo ci
+version: 2.1
+workflows:
+  testing:
+    jobs:
+      - test
+      - build-ipa:
+          requires:
+            - test
+          filters:
+            branches:
+              ignore: 
+                - production
 
-on: ['push']
+      - deploy:
+          requires:
+            - test
+          filters:
+            branches:
+              only: production
 
+      
 jobs:
-  check_validity_flutter:
-    runs-on: [<personal_runner_label>]
-    name: "Test phase" 
+  test:
+    machine: true
+    resource_class: nathansepul/class_appollo
     steps:
-      # extract repo
-      - name: Checkout
-        uses: actions/checkout@v3
+      - checkout
+      - run: echo 'test'
+      # - run: flutter test
 
-      - name: Run unite test
-        run: flutter test
-
-
-  build_ipa:
-    needs: check_validity_flutter
-    runs-on: [<personal_runner_label>]
-    name: "Build IPA file"
-    if: github.ref != 'refs/heads/production'
+  build-ipa:
+    machine: true
+    resource_class: nathansepul/class_appollo
     steps:
-      - name: Connection
-        run : appollo signin --email <email> --password <password>
-
-      - name: Building the IPA
-        run: appollo build start --build-type=ad-hoc <application_key>
-
-
-      ##
-      ## Affichage de l'ipa
-      ##
-
-
-      - name: Disconnection
-        run : appollo signout
-
+      - run: echo 'build ipa'
+      - checkout
+      - run: appollo signin --email <email> --password <password>
+      - run: appollo build start --build-type=ad-hoc 882
+      - run: appollo signout
 
   deploy:
-    needs: build_ipa
-    runs-on: [<personal_runner_label>]
-    name: "Publication app" 
-    
-    # to use only if push on 'production' branch
-    if: github.ref == 'refs/heads/production'
+    machine: true
+    resource_class: nathansepul/class_appollo
     steps:
-      - name: Connection
-        run : appollo signin --email <email> --password <password>
+      - checkout
+      - run: echo 'Publication app'
+      - run: appollo signin --email <email> --password <password>
+      - run: appollo build start --build-type=publication <application_key>
+      - run: appollo signout
 
-      - name: Publication
-        run: appollo build start --build-type=publication <application_key>
-      
-      - name: Disconnection
-        run : appollo signout
 ```
 
 In this exemple we have 4 parametres:
