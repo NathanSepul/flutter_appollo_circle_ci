@@ -4,16 +4,16 @@ workflows:
     jobs:
       - test
       - build-ipa:
-          requires:
-            - test
           filters:
+            requires:
+              - test
             branches:
-              exept: main
-              
+              except: main
+
       - deploy:
-          requires:
-            - test
           filters:
+            requires:
+              - test
             branches:
               only: main
 
