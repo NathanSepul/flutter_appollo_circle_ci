@@ -16,7 +16,7 @@ jobs:
       - run: flutter test
 
   build-ipa:
-    machine:true
+    machine: true
     ressource_class: nathansepul/class_appollo
     steps:
       - echo 'build ipa'
