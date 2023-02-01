@@ -14,9 +14,9 @@ workflows:
       - deploy:
           requires:
             - test
-          filters:
-            branches:
-              only: production
+          # filters:
+          #   branches:
+          #     only: production
 
       
 jobs:
