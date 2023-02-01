@@ -1,3 +1,4 @@
+
 version: 2.1
 workflows:
   testing:
@@ -8,4 +9,5 @@ jobs:
     machine: true
     resource_class: nathansepul/project_flutter_appollo
     steps:
+      - checkout
       - run: echo "Hi I'm on Runners test!"
