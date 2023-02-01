@@ -3,11 +3,13 @@ version: 2.1
 workflows:
   testing:
     jobs:
-      - runner-test
+      - test
+      
 jobs:
-  runner-test:
+  test:
     machine: true
     resource_class: nathansepul/class_appollo
     steps:
-      - checkout
-      - run: echo "Hi I'm on Runners test!ff"
+      - name: Run unite test
+        run: echo 'test flutter'
+        # run: flutter test
