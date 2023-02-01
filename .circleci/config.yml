@@ -4,12 +4,16 @@ workflows:
     jobs:
       - test
       - build-ipa:
+          requires:
+            - test
           filters:
             branches:
               ignore: 
                 - production
 
       - deploy:
+          requires:
+            - test
           filters:
             branches:
               only: production
