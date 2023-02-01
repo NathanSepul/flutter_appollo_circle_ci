@@ -4,8 +4,6 @@ workflows:
     jobs:
       - test
       - build-ipa
-          requires:
-            - test
 
       
 jobs:
@@ -25,5 +23,3 @@ jobs:
       # - run: appollo signin --email <email> --password <password>
       # - run: appollo build start --build-type=ad-hoc <application_key>
       # - run: appollo signout
-      
-      
