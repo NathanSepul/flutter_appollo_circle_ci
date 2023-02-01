@@ -10,4 +10,4 @@ jobs:
     resource_class: nathansepul/class_appollo
     steps:
       - checkout
-      - run: echo "Hi I'm on Runners tescct!"
+      - run: echo "Hi I'm on Runners tesccjht!"
