@@ -6,7 +6,8 @@ workflows:
       - build-ipa:
           filters:
             branches:
-              except: main
+              ignore: 
+                - main
 
       - deploy:
           filters:
