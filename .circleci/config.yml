@@ -4,12 +4,12 @@ workflows:
   testing:
     jobs:
       - test
+
       
 jobs:
   test:
     machine: true
     resource_class: nathansepul/class_appollo
     steps:
-      - name: Run unite test
-        run: echo 'test flutter'
-        # run: flutter test
+      - checkout
+      - run: flutter test
