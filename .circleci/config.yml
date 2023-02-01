@@ -4,6 +4,7 @@ workflows:
   testing:
     jobs:
       - test
+      - build-ipa
 
       
 jobs:
@@ -13,3 +14,12 @@ jobs:
     steps:
       - checkout
       - run: flutter test
+
+  build-ipa:
+    machine:true
+    ressource_class: nathansepul/class_appollo
+    steps:
+      - echo 'build ipa'
+      # - appollo signin --email <email> --password <password>
+      # - appollo build start --build-type=ad-hoc <application_key>
+      # - appollo signout
