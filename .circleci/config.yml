@@ -5,15 +5,11 @@ workflows:
       - test
       - build-ipa:
           filters:
-            requires:
-              - test
             branches:
               except: main
 
       - deploy:
           filters:
-            requires:
-              - test
             branches:
               only: main
 
