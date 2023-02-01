@@ -35,7 +35,7 @@ jobs:
       - run: echo 'build ipa'
       - checkout
       # - run: appollo signin --email <email> --password <password>
-      - run: appollo build start --build-type=ad-hoc 882
+      # - run: appollo build start --build-type=ad-hoc <application_key>
       # - run: appollo signout
 
   deploy:
