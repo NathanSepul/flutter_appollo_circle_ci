@@ -1,33 +1,25 @@
-<h1>Appollo with CI/CD Circle CI</h1>
+<h1>Appollo with CI/CD CircleCI</h1>
 
 This is an example project, with the objective the show how to use the [Circle Ci](https://circleci.com) with [Appollo](https://github.com/Appollo-CLI/Appollo "The easy way to setup, build & release flutter apps for iOS on Linux, Windows and MacOS").  
 ![workflow](/.images/workflow.jpg "workflow")
 
-<h2>Prerequisssssssssites</h2>
+<h2>Prerequisites</h2>
 
 To Follow this tutorial you will need :
 - [Appollo](https://github.com/Appollo-CLI/Appollo) configured on the futur runner machine
 - A repository GitHub, GitLab or Bitbucket with a project [Flutter](https://docs.flutter.dev/get-started/install) directly in root repository
 
-<h2>Configuration</h2>
-When your connect your account (GitHub, GitLab or Bitbucket) you can select the repository you want to monitor.
+<h2>Configuration of repository</h2>
 
-To use Circle CI there are 2 possibilities, use the GitHub's runner (paid solution) or use the self-hosted runners (free solution).
-In this tutorial we will use the sel-hosted runner.
-
-<h3>Self-hosted runner</h3>
-
-To add a self-hosted runner to your repository you should go to settings's repository **>** Actions **>**  Runners  **>** New self-hosted runner button and follow the tutorial for your os. 
-
-<h3>Creation of actions file</h3>
-
-To work properly you need to create these folder at the root of project 
+<h3>Creation of workflows file</h3>
+To work properly you need to create this folder at the root of project 
 
 ```
-mkdir -p .github/worklows/
+mkdir .circleci/
 ```
+
 <br>
-Inside workflows you will create github_actions.yml file and insert your actions.
+Inside .circleci you will create config.yml file and insert your jobs.
 
 <br>  
 Exemple of workflow with Appollo
@@ -52,22 +44,19 @@ workflows:
           filters:
             branches:
               only: production
-
       
 jobs:
   test:
     machine: true
-    resource_class: nathansepul/class_appollo
+    resource_class: <namespace/resource_class_label>
     steps:
       - checkout
-      - run: echo 'test'
-      # - run: flutter test
+      - run: flutter test
 
   build-ipa:
     machine: true
-    resource_class: nathansepul/class_appollo
+    resource_class: <namespace/resource_class_label>
     steps:
-      - run: echo 'build ipa'
       - checkout
       - run: appollo signin --email <email> --password <password>
       - run: appollo build start --build-type=ad-hoc 882
@@ -75,10 +64,9 @@ jobs:
 
   deploy:
     machine: true
-    resource_class: nathansepul/class_appollo
+    resource_class: <namespace/resource_class_label>
     steps:
       - checkout
-      - run: echo 'Publication app'
       - run: appollo signin --email <email> --password <password>
       - run: appollo build start --build-type=publication <application_key>
       - run: appollo signout
@@ -86,7 +74,7 @@ jobs:
 ```
 
 In this exemple we have 4 parametres:
-- <*personal_runner_label*> is the self-hosted runner label defined when it was created
+- <*namespace/resource_class_label*> is the name space and the resource class you will create in next step.
 - <*email*> is the email to connect to your account on appollo
 - <*password*> is the password to connect to your account on appollo
 - <*application_key*> is the key off your application. 
@@ -98,6 +86,28 @@ If you forgot the application's key you can use this following command :
 appollo app ls
 ```
 
+
+<h2>Configuration of CircleCI</h2>
+
+<h3>Connection to CircleCI</h3>
+
+After connected your account (GitHub, GitLab or Bitbucket) you can select your organization and chose the project your want set up.  
+![set up project](/.images/setUp.jpg "set up project")
+
+When you had selected your project you can chose the *'Fastest'* solution and specify the branch
+![set up project modal](/.images/modal.jpg "set up project modal")
+
+<h3>Self-hosted runner</h3>
+
+To use CircleCI there are 2 possibilities, use the  CircleCI's runner (paid solution) or use the self-hosted runners (free solution).
+In this tutorial we will use the sel-hosted runner.
+
+The first step is agree the [CircleCI Runner Terms](https://circleci.com/legal/runner-terms) in organization settings **>** Self-Hosted Runners.
+When you add agree the usage terms you can access to *Self-Hosted Runners* on the left and create ressource class by following the tutorial 
+![create ressource class](/.images/createressourceclass.jpg "create ressource class").
+
+Now that you have create your self-hosted runner you can update your config.yml with the namespace and resource class label.
+
 <h2>Usage</h2>
 
 Now that all is configured you doens't need to do anything else.  
@@ -106,8 +116,7 @@ However the last job is call only if there are a push on *production* branch and
 
 <h3>View the actions</h3>
 
-When you push your code on Github you can show the workflow executed or in execution in the section *Actions* of the repository
-![Go to action](/.images/actions_bar.jpg "Go to action")
+When you push your code you can show the workflow executed or in execution in the section *Dashboard* on the left side of CircleCI
 
 If the unit tests has been successfully passed and the build ipa successed too you got te url to get the IPA, either to download it, or to install it if opened from an iOS device.
 
