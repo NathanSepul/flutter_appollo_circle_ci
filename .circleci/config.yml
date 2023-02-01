@@ -7,12 +7,12 @@ workflows:
           filters:
             branches:
               ignore: 
-                - main
+                - production
 
       - deploy:
           filters:
             branches:
-              only: main
+              only: production
 
       
 jobs:
