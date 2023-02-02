@@ -80,9 +80,9 @@ In this exemple we have 4 parametres:
 - <*password*> is the password to connect to your account on appollo
 - <*application_key*> is the key off your application. 
 
-<br>  
-:warning: **If you are using CircleCI's runners** : You should add a job to add appollo ! 
+<br> 
 
+:warning: **If you are using CircleCI's runners** : You should add a job to add appollo !  
 ```
 pip install appollo 
 ```
