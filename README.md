@@ -119,7 +119,7 @@ Now that you have create your self-hosted runner you can update your config.yml 
 <h2>Usage</h2>
 
 Now that all is configured you doens't need to do anything else.  
-The previous worflow is call on each push no matter the branch because we specify *on: ['push']*.  
+The previous worflow is call on each push no matter the branch because we had specify *on: ['push']*.  
 However the last job is call only if there are a push on *production* branch and the second job isn't call in this case.
 
 <h3>View the actions</h3>
@@ -130,7 +130,7 @@ If the unit tests has been successfully passed and the build ipa successed too y
 
 Finally if the push was on *production* branch the workflow will publish your app on App Store.
 
-And that's it with this tutorial you learn how to use Appollo with Github Actions.
+And that's it with this tutorial you had learn how to use Appollo with Github Actions.
 
 <h2>Documentation</h2>
 We purpose 3 others exemple of solution :
