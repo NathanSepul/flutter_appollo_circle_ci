@@ -81,7 +81,8 @@ In this exemple we have 4 parametres:
 - <*application_key*> is the key off your application. 
 
 <br>  
-:warning: **If you are using Gitlab's runners**: You should add a job to add appollo !  
+:warning: **If you are using Gitlab's runners**: You should add a job to add appollo ! 
+ 
 ```
 pip install appollo 
 ```
