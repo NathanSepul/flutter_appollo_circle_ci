@@ -87,6 +87,7 @@ In this exemple we have 4 parametres:
 
 > **_NOTE:_** If you forgot the application's Appollo key you can use this following command :  `appollo app ls`
 
+<br>
 
 <h2>Configuration of CircleCI</h2>
 
