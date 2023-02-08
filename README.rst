@@ -105,11 +105,13 @@ Connection to CircleCI
 ^^^^^^^^^^^^^^^^^^^^^^
 
 After connected your account (GitHub, GitLab or Bitbucket) you can select your organization and chose the project your want set up.  
+
 .. image:: /.images/setUp.jpg
     :align: center
     :width: 50%
 
 When you had selected your project you can chose the *'Fastest'* solution and specify the branch
+
 .. image:: /.images/modal.jpg
     :align: center
     :width: 50%
@@ -123,6 +125,7 @@ In this tutorial we will use the sel-hosted runner.
 
 The first step is agree the `CircleCI Runner Terms <https://circleci.com/legal/runner-terms>`_ in organization settings **>** Self-Hosted Runners.
 When you add agree the usage terms you can access to *Self-Hosted Runners* on the left and create ressource class by following the tutorial 
+
 .. image:: /.images/createressourceclass.jpg
     :align: center
     :width: 50%
