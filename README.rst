@@ -4,6 +4,7 @@ Appollo with CI/CD CircleCI
 
 This is an example project, with the objective to show how to use CircleCI with `Appollo <https://github.com/Appollo-CLI/Appollo>`_.
 for releasing iOS apps with a CI solution.  
+
 .. image:: /.images/workflow.jpg 
     :align: center
     :width: 70%
