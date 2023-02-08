@@ -6,7 +6,7 @@ This is an example project, with the objective to show how to use CircleCI with 
 for releasing iOS apps with a CI solution.  
 
 .. image:: /.images/workflow.jpg 
-    :align: center
+    :align: middle
     :width: 70%
 
 -------------
