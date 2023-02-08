@@ -88,6 +88,7 @@ Here is an example :
 
 
 In this exemple we have 4 parametres:
+
 * <*namespace/resource_class_label*> is the name space and the resource class you will create in next step.
 * <*email*> is the email to connect to your account on appollo
 * <*password*> is the password to connect to your account on appollo
