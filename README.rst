@@ -6,7 +6,7 @@ This is an example project, with the objective to show how to use CircleCI with 
 for releasing iOS apps with a CI solution.  
 
 .. image:: /.images/workflow.jpg 
-    :align: middle
+    :align: center
     :width: 70%
 
 -------------
@@ -107,11 +107,12 @@ Connection to CircleCI
 After connected your account (GitHub, GitLab or Bitbucket) you can select your organization and chose the project your want set up.  
 .. image:: /.images/setUp.jpg
     :align: center
+    :width: 50%
 
 When you had selected your project you can chose the *'Fastest'* solution and specify the branch
 .. image:: /.images/modal.jpg
     :align: center
-
+    :width: 50%
 
 ^^^^^^^^^^^^^^^^^^
 Self-hosted runner
@@ -124,6 +125,7 @@ The first step is agree the `CircleCI Runner Terms <https://circleci.com/legal/r
 When you add agree the usage terms you can access to *Self-Hosted Runners* on the left and create ressource class by following the tutorial 
 .. image:: /.images/createressourceclass.jpg
     :align: center
+    :width: 50%
 
 
 Now that you have create your self-hosted runner you can update your config.yml with the namespace and resource class label.
