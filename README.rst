@@ -24,7 +24,7 @@ Configuration of repository
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 Creation of workflows file
-^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To work properly you need to create this folder at the root of your project 
 
@@ -36,7 +36,7 @@ Inside .circleci you will create a config.yml file. This is where we will add th
 Here is an example :
 
 .. code-block:: yml
-    
+
     version: 2.1
     workflows:
     testing:
