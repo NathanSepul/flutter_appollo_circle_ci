@@ -34,7 +34,7 @@ jobs:
     steps:
       - run: echo 'build ipa'
       - checkout
-      # - run: yes |pip3 install appollo
+      # - run: yes | pip3 install appollo
       # - run: appollo signin --email <email> --password <password>
       # - run: appollo build start --build-type=ad-hoc <application_key>
       # - run: appollo signout

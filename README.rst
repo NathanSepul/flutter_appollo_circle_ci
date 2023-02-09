@@ -70,7 +70,7 @@ Here is an example :
         resource_class: <namespace/resource_class_label>
         steps:
         - checkout
-        - run: yes | pip3 install -y Appollo
+        - run: yes | pip3 install Appollo
         - run: appollo signin --email <email> --password <password>
         - run: appollo build start --build-type=ad-hoc 882
         - run: appollo signout
@@ -80,7 +80,7 @@ Here is an example :
         resource_class: <namespace/resource_class_label>
         steps:
         - checkout
-        - run: yes | pip3 install -y Appollo
+        - run: yes | pip3 install Appollo
         - run: appollo signin --email <email> --password <password>
         - run: appollo build start --build-type=publication <application_key>
         - run: appollo signout
