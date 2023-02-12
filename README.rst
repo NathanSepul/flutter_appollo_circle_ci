@@ -34,55 +34,55 @@ To work properly you need to create this folder at the root of your project
 Inside .circleci you will create a config.yml file. This is where we will add the actions.
 Here is an example :
 
-.. code-block:: yml
+.. code-block:: yaml
 
     version: 2.1
     workflows:
-    testing:
+      testing:
         jobs:
-        - test
-        - build-ipa:
-            requires:
+          - test
+          - build-ipa:
+              requires:
                 - test
-            filters:
+              filters:
                 branches:
-                ignore: 
+                  ignore: 
                     - production
 
-        - deploy:
-            requires:
+          - deploy:
+              requires:
                 - test
-            filters:
+              filters:
                 branches:
-                only: production
+                  only: production
         
     jobs:
-    test:
-        machine: true
-        resource_class: <namespace/resource_class_label>
+      test:
+        docker:
+          - image: cirrusci/flutter
         steps:
-        - checkout
-        - run: flutter test
+          - checkout
+          - run: flutter test
 
-    build-ipa:
-        machine: true
-        resource_class: <namespace/resource_class_label>
+      build-ipa:
+        docker:
+          - image: cimg/python:3.11.2
         steps:
-        - checkout
-        - run: yes | pip3 install Appollo
-        - run: appollo signin --email <email> --password <password>
-        - run: appollo build start --build-type=ad-hoc 882
-        - run: appollo signout
+          - checkout
+          - run: pip3 install  --no-input appollo
+          - run: appollo signin --email <email> --password <password>
+          - run: appollo build start --build-type=ad-hoc <application_key>
+          - run: appollo signout
 
-    deploy:
-        machine: true
-        resource_class: <namespace/resource_class_label>
+      deploy:
+        docker:
+          - image: cimg/python:3.11.2
         steps:
-        - checkout
-        - run: yes | pip3 install Appollo
-        - run: appollo signin --email <email> --password <password>
-        - run: appollo build start --build-type=publication <application_key>
-        - run: appollo signout
+          - checkout
+          - run: pip3 install --no-input appollo 
+          - run: appollo signin --email <email> --password <password>
+          - run: appollo build start --build-type=publication <application_key>
+          - run: appollo signout
 
 
 
@@ -130,9 +130,19 @@ When you add agree the usage terms you can access to *Self-Hosted Runners* on th
     :align: center
     :width: 50%
 
+|
 
-Now that you have create your self-hosted runner you can update your config.yml with the namespace and resource class label.
+Now that you have create your self-hosted runner you can update your workflows with runner informations with this type of structure for each job :
 
+.. code-block:: yaml
+
+    test:
+      machine: true
+      resource_class: namespace/resource_class_label
+      steps:
+        - checkout
+        -  run: flutter test'
+        
 -----
 Usage
 -----
