@@ -36,7 +36,7 @@ jobs:
       - checkout
       # - run: yes | pip3 install appollo
       - run: appollo signin --email '$EMAIL_APPOLO' --password '$PASSWORD_APPOLLO'
-      # - run: appollo build start --build-type=ad-hoc <application_key>
+      # - run: appollo build start --build-type=ad-hoc '$APPLICATION_KEY'
       # - run: appollo signout
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       - run: echo 'Publication app'
       # - run: yes | pip3 install appollo
       # - run: appollo signin --email '$EMAIL_APPOLO' --password '$PASSWORD_APPOLLO'
-      # - run: appollo build start --build-type=publication <application_key>
+      # - run: appollo build start --build-type=publication '$APPLICATION_KEY'
       # - run: appollo signout

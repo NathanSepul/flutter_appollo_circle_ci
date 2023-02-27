@@ -70,8 +70,8 @@ Here is an example :
         steps:
           - checkout
           - run: pip3 install  --no-input appollo
-          - run: appollo signin --email '$<EMAIL_APPOLO>' --password '$<PASSWORD_APPOLLO>'
-          - run: appollo build start --build-type=ad-hoc <application_key>
+          - run: appollo signin --email '$EMAIL_APPOLO' --password '$PASSWORD_APPOLLO'
+          - run: appollo build start --build-type=ad-hoc '$APPLICATION_KEY'
           - run: appollo signout
 
       deploy:
@@ -80,18 +80,17 @@ Here is an example :
         steps:
           - checkout
           - run: pip3 install --no-input appollo 
-          - run: appollo signin --email <email> --password <password>
-          - run: appollo build start --build-type=publication <application_key>
+          - run: appollo signin --email '$EMAIL_APPOLO' --password '$PASSWORD_APPOLLO'
+          - run: appollo build start --build-type=publication '$APPLICATION_KEY'
           - run: appollo signout
 
 
 
-In this exemple we have 4 parametres:
+In this exemple we have 3 parametres:
 
-* <*namespace/resource_class_label*> is the name space and the resource class you will create in next step.
-* <*EMAIL_APPOLO*> is the email to connect to your account on appollo
-* <*PASSWORD_APPOLLO*> is the password to connect to your account on appollo
-* <*application_key*> is the key off your application. 
+* *EMAIL_APPOLO* is the email to connect to your account on appollo
+* *PASSWORD_APPOLLO* is the password to connect to your account on appollo
+* *application_key* is the key off your application. 
 
 .. note:: If you forgot the application's Appollo key you can use this following command :  `appollo app ls`
 
