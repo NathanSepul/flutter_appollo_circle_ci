@@ -86,11 +86,15 @@ Here is an example :
 
 
 
-In this exemple we have 3 parametres:
+In this exemple we have 3 variables:
 
 * *EMAIL_APPOLO* is the email to connect to your account on appollo
 * *PASSWORD_APPOLLO* is the password to connect to your account on appollo
 * *APPLICATION_KEY* is the key off your application. 
+
+Here is the `documentation <https://circleci.com/docs/env-vars/>`_ for variables on CircleCI
+
+|
 
 .. note:: If you forgot the application's Appollo key you can use this following command :  `appollo app ls`
 
