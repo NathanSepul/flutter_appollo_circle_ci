@@ -46,6 +46,6 @@ jobs:
       - checkout
       - run: echo 'Publication app'
       # - run: yes | pip3 install appollo
-      # - run: appollo signin --email <email> --password <password>
+      # - run: appollo signin --email '$EMAIL_APPOLO' --password '$PASSWORD_APPOLLO'
       # - run: appollo build start --build-type=publication <application_key>
       # - run: appollo signout
